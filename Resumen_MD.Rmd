@@ -1,0 +1,1186 @@
+---
+title: "Resumen_MD"
+output:
+  html_document:
+    toc: true
+    toc_depth: 1
+    toc_float: true
+    css: styles.css
+date: "2026-10-04"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+::: {.tema}
+
+# 1. Introducción a la Minería de Datos
+
+**¿Qué es la Minería de datos?**
+
+La minería de datos es una técnica asistida por computadora que permite procesar y explorar grandes conjuntos de datos para descubrir patrones y relaciones ocultas. Su finalidad es transformar los datos en bruto en conocimiento práctico que las organizaciones pueden utilizar para resolver problemas, analizar las posibles consecuencias de sus decisiones empresariales y aumentar sus beneficios.
+
+**¿Por qué es importante la minería de datos?**
+
+La minería de datos es importante porque constituye un elemento clave para realizar análisis exitosos. Permite a las empresas descubrir conocimiento útil para aumentar la confianza de los clientes, encontrar nuevas fuentes de ingresos y favorecer que los clientes regresen. Además, una minería de datos eficaz puede apoyar distintos aspectos de la planificación empresarial y la administración de las operaciones.
+
+**Telecomunicaciones, medios y tecnología**
+
+Estos sectores utilizan la minería de datos para identificar patrones en el comportamiento de los clientes y mejorar la atención. Por ejemplo, pueden analizar el uso del ancho de banda para ofrecer actualizaciones o recomendaciones de servicio personalizadas.
+
+**Banca y seguros**
+
+Los servicios financieros utilizan la minería de datos para abordar problemas como el fraude, el cumplimiento, la gestión de riesgos y la pérdida de clientes. En el caso de los seguros, también puede ayudar a determinar precios adecuados comparando el rendimiento histórico de los productos con los precios de la competencia.
+
+**Educación**
+
+En educación, la minería de datos puede utilizarse para evaluar a los estudiantes, personalizar las lecciones y analizar su progreso. Esto permite a los educadores comprender mejor las necesidades de los alumnos y brindarles un apoyo más adecuado.
+
+**Fabricación**
+
+En fabricación, la minería de datos permite realizar análisis en tiempo real y predictivos sobre los equipos, la calidad de los productos y la cadena de suministro. También puede utilizar datos históricos para anticipar el desgaste de la maquinaria, planificar el mantenimiento y reducir los tiempos de inactividad.
+
+**Venta minorista**
+
+Las empresas minoristas utilizan la minería de datos para analizar el comportamiento de compra de los clientes y obtener información útil para el marketing y las previsiones de ventas. También ayuda a mejorar la logística y el inventario, por ejemplo, identificando productos de temporada que conviene almacenar con anticipación.
+
+**Modelos de proceso para proyectos de Minería de datos**
+
+- KDD: Knowledge Discovery in Databases. Fayyad, 1996.
+- SEMMA: Sample, Explore, Modify, Model, Assess. SAS, 2003.
+- DMAMC: Definir, Medir, Analizar, Mejorar, Controlar. iSixSigma, 2005.
+- Guerrilla Analytics: Enda Ridge, 2015.
+- TDSP: Team Data Science Process. Microsoft, 2016.
+- CRISP-DM: Cross Industry Standard Process for Data Mining. CRISP-DM, 2000.
+
+| CRISP-DM | KDD | SEMMA | TDSP | Guerrilla |
+|---|---|---|---|---|
+| Comprensión del negocio | — | — | Comprensión del negocio | — |
+| Comprensión de los datos | Selección | Sample / Explore | Data acquisition and understanding | Extract / Receive / Load |
+| Preparación de los datos | Pre-procesado / Transformación | Manipulate | Data acquisition and understanding | Extract / Receive / Load |
+| Modelado | Data mining | Model | Modeling | Analytics |
+| Evaluación | Interpretación / evaluación | Assess | Modeling | Consolidate |
+| Explotación | — | — | Deployment and customer acceptance | Work products / Reporting |
+
+**Glosario / Terminología**
+
+**Metodología CRISP-DM:** término general que reúne todos los conceptos definidos dentro de CRISP-DM.
+
+**Modelo de referencia:** organiza los proyectos de minería de datos en fases, tareas y salidas, y muestra de forma general qué se debe hacer en el proyecto.
+
+**Guía de usuario:** explica de manera más detallada cómo realizar las fases y tareas de un proyecto de minería de datos.
+
+**Contexto de minería de datos:** conjunto de condiciones específicas del proyecto, como el tipo de problema, las técnicas o herramientas y el dominio de aplicación.
+
+**Modelo de referencia = qué hacer.**
+
+**Guía de usuario = cómo hacerlo.**
+
+**Del modelo genérico a los modelos especializados**
+
+Un modelo de minería de datos puede ser general, pero cada proyecto necesita adaptarse a su situación específica. Para hacerlo, se toma en cuenta el contexto del proyecto, que se divide en cuatro aspectos:
+
+**Dominio de aplicación:** área donde se aplica el proyecto, por ejemplo detección de intrusos, predicción de fallos o filtrado de spam.
+
+**Tipo de problema:** qué se quiere hacer con los datos, como clasificación, predicción, segmentación o análisis de dependencias.
+
+**Aspectos técnicos:** características o problemas de los datos, como valores perdidos, valores atípicos, ruido, datos desbalanceados o selección de instancias.
+
+**Herramientas y técnicas:** programas y métodos utilizados, como Python, Pandas, Scikit-learn, TensorFlow, Keras, Random Forest, k-NN, entre otros.
+
+**CRISP-DM está estructurado en 4 niveles de abstracción**
+
+El diagrama muestra cómo CRISP-DM va de lo más general a lo más específico:
+
+**Fases → Tareas genéricas → Tareas especializadas → Instancias de proceso**
+
+**Fases:** son las grandes etapas que organizan el proyecto.
+
+**Tareas genéricas:** indican de forma general qué tareas deben realizarse dentro de cada fase.
+
+**Tareas especializadas:** adaptan esas tareas generales al contexto específico del proyecto.
+
+**Instancias de proceso:** representan lo que realmente se hizo en un proyecto concreto, incluyendo acciones, decisiones y resultados.
+
+**Glosario / Terminología**
+
+**Fase:** parte de alto nivel de CRISP-DM que agrupa tareas relacionadas.
+
+**Tarea:** conjunto de actividades realizadas para producir una o más salidas dentro de una fase.
+
+**Actividad:** acción específica que forma parte de una tarea.
+
+**Salida:** resultado tangible obtenido al ejecutar una tarea.
+
+**Tareas genéricas:** tareas generales que pueden aparecer en distintos proyectos de minería de datos. Deben ser completas, porque cubren todo el proceso, y estables, porque siguen siendo útiles aunque aparezcan nuevas técnicas.
+
+**Tareas especializadas:** adaptación de una tarea genérica a un contexto específico de minería de datos.
+
+**Modelo de proceso:** estructura que organiza y guía la ejecución de un proyecto de minería de datos. Incluye el modelo de referencia y la guía de usuario.
+
+**Caso del proceso:** proyecto específico descrito utilizando el modelo de proceso.
+
+**Tipos de problemas de minería de datos:** categorías de problemas como descripción y resumen de datos, segmentación, descripción de conceptos, clasificación, predicción y análisis de dependencia.
+
+**Tipos de problemas de Minería de Datos**
+
+**1. Descripción de datos y resumen**
+
+Es una tarea de minería de datos que busca entender y resumir cómo son los datos, estén etiquetados o no, utilizando técnicas estadísticas y de visualización.
+
+**2. Segmentación (agrupamiento o clustering)**
+
+Es una tarea de minería de datos que toma datos sin etiqueta y los agrupa según sus similitudes, formando grupos o clusters. Después, esos grupos pueden interpretarse o identificarse como categorías.
+
+**3. Descripciones de concepto**
+
+Es una tarea de minería de datos que utiliza datos etiquetados para describir las características de cada clase o concepto. Para ello puede usar reglas, agrupamiento conceptual o árboles de decisión.
+
+**4. Clasificación**
+
+Es una tarea de minería de datos que utiliza datos etiquetados para entrenar un modelo y luego asignar una etiqueta o categoría a datos nuevos sin etiqueta.
+
+Puede usar métodos como árboles de decisión, SVM, redes neuronales o k-NN.
+
+:::
+
+
+::: {.tema}
+
+# 2. Metodología CRISP-DM
+
+CRISP-DM es una metodología que organiza los proyectos de minería de datos en distintas fases. Su objetivo es guiar el proceso desde la comprensión del problema hasta la obtención de resultados útiles.
+
+**2.1 Comprensión del negocio o problema**
+
+Esta es la primera fase de CRISP-DM. Busca comprender qué necesita la organización, cuál es el problema que se desea resolver y qué resultados se esperan obtener. También permite transformar los objetivos del negocio en objetivos técnicos de minería de datos.
+
+**Determinar los objetivos del negocio:** consiste en definir el problema principal, la razón por la que se utilizará minería de datos y los criterios de éxito. Estos criterios pueden ser cualitativos, evaluados por un experto, o cuantitativos, medidos mediante resultados numéricos.
+
+**Valoración de la situación:** se analiza el estado actual antes de comenzar el proyecto. Se consideran los datos disponibles, el conocimiento previo, los recursos, los riesgos, las restricciones, la terminología y la relación entre costes y beneficios.
+
+**Determinar los objetivos de Data Mining:** los objetivos del negocio se convierten en metas concretas relacionadas con los datos. Por ejemplo, si el negocio quiere aumentar la asignación de créditos, una meta de minería de datos podría ser identificar el perfil de los clientes con mayor capacidad de endeudamiento.
+
+**Realizar el plan del proyecto:** se establecen los pasos que se seguirán, las técnicas que se utilizarán y la forma en que se organizará el trabajo.
+
+**2.2 Comprensión de los datos**
+
+Esta fase busca conocer los datos disponibles y determinar si son adecuados para resolver el problema. Se realiza un primer contacto con la información, se estudian sus características y se revisa su calidad.
+
+**Recolectar los datos iniciales:** consiste en obtener los datos necesarios y documentar su origen, ubicación, forma de recolección y posibles problemas encontrados durante el proceso.
+
+**Descripción de los datos:** se analizan características como la cantidad de registros, los campos disponibles, el significado de cada variable y el formato de la información.
+
+**Exploración de datos:** es una exploración inicial o previa de los datos. Se utilizan estadísticas básicas, tablas de frecuencia y gráficos para obtener una primera idea de cómo se comportan los datos e identificar patrones, relaciones, distribuciones o posibles anomalías antes de realizar análisis más avanzados.
+
+**Verificar la calidad de los datos:** se revisan problemas como valores nulos, datos inconsistentes, valores fuera de rango o ruido. El objetivo es asegurar que los datos sean completos y correctos.
+
+**Idea clave:** la comprensión del negocio define qué problema se quiere resolver, mientras que la comprensión de los datos permite conocer qué información se tiene y cómo se comporta inicialmente para resolverlo.
+
+:::
+
+
+::: {.tema}
+
+# 3. Datos y tipos de variables
+
+**3.1 ¿Qué son los datos?**
+
+Los datos son valores o características que describen a un individuo. Cada característica es una variable, y el conjunto de variables forma un registro u observación.
+
+**3.2 Tipos de variables**
+
+Las variables se dividen en cuantitativas y cualitativas.
+
+**Cuantitativas o numéricas:** representan valores numéricos que pueden compararse y tratarse matemáticamente, como edad, ingresos, notas o distancia. Sin embargo, algunos números solo funcionan como etiquetas, como el código postal, número de teléfono o código de una asignatura. Se dividen en:
+
+**Discretas:** toman valores contables, generalmente enteros.
+
+**Continuas:** pueden tomar cualquier valor dentro de un intervalo. CUC_MineriaDatos_BD_Sem2 CUC_MineriaDatos_BD_Sem2
+
+**Cualitativas o categóricas:** representan categorías y no cantidades. Se dividen en:
+
+**Nominales:** no tienen un orden natural entre sus categorías, como estado civil o región.
+
+**Ordinales:** tienen un orden, pero no existe una distancia definida entre sus categorías, como Bachiller, Licenciado, Máster y Doctor. CUC_MineriaDatos_BD_Sem2 CUC_MineriaDatos_BD_Sem2 CUC_MineriaDatos_BD_Sem2
+
+**Variables → Cuantitativas → Discretas / Continuas**
+
+**Variables → Cualitativas → Nominales / Ordinales**
+
+**3.3 Código disyuntivo completo**
+
+El código disyuntivo completo transforma variables cualitativas en varias columnas binarias usando 0 y 1.
+
+Cada categoría de una variable se convierte en una columna diferente:
+
+**1 indica que el individuo pertenece a esa categoría.**
+
+**0 indica que no pertenece.**
+
+Por ejemplo, una variable como sexo puede dividirse en las columnas F y M, mientras que una variable como ingreso puede dividirse en Bajo, Medio y Alto.
+
+Esto permite representar categorías de forma numérica para poder analizarlas posteriormente.
+
+**3.4 Datos nulos o ausentes**
+
+Un valor nulo indica que el dato que debía existir está ausente. No significa cero, espacio en blanco ni cadena vacía; en esencia representa un valor desconocido. CUC_MineriaDatos_BD_Sem2
+
+Antes de tratar un valor nulo, es importante entender por qué ocurrió, ya que puede deberse a que el dato no existe, se perdió durante una migración o simplemente no aplica para esa observación. CUC_MineriaDatos_BD_Sem2
+
+Los dos tratamientos principales son:
+
+**Imputación:** reemplaza el valor nulo por otro valor usando alguna técnica o criterio, como la moda. Debe hacerse con cuidado porque puede introducir sesgos en los datos.
+
+**Exclusión:** elimina los registros que contienen valores nulos cuando se dispone de suficientes datos para continuar trabajando.
+
+**3.5 Datos atípicos**
+
+Los datos atípicos son valores que se encuentran muy alejados del rango o comportamiento normal los demás datos. Antes de eliminarlos o modificarlos, es importante revisar su causa, ya que pueden deberse a un error o representar un caso real e inusual.
+
+Una forma común de identificarlos es mediante los diagramas de caja o boxplots, que permiten observar la distribución de los datos y detectar valores fuera de los límites esperados.
+
+**3.6 Diagramas de caja (Boxplots)**
+
+Los diagramas de caja o boxplots muestran de forma resumida cómo se distribuyen los datos y son útiles para identificar datos atípicos.
+
+**Q1:** representa el primer cuartil, es decir, el punto donde se encuentra aproximadamente el 25% de los datos.
+
+**Mediana o Q2:** representa el valor central de la distribución, es decir, el 50% de los datos queda por debajo y el otro 50% por encima.
+
+**Q3:** representa el tercer cuartil, donde se acumula aproximadamente el 75% de los datos.
+
+**RIC (Rango Intercuartílico):** representa el 50% central de los datos y se calcula como:
+
+**RIC = Q3 - Q1**
+
+**Límite inferior (Li):** marca hasta dónde pueden llegar normalmente los valores por debajo de la caja.
+
+**Límite superior (Ls):** marca hasta dónde pueden llegar normalmente los valores por encima de la caja.
+
+**Mínimo y máximo:** representan los valores extremos que todavía se consideran dentro del rango esperado.
+
+**Valores atípicos:** son los valores que quedan fuera de esos límites y aparecen separados del resto en el gráfico.
+
+En resumen, la caja contiene el 50% central de los datos, la línea dentro de la caja representa la mediana, los bigotes muestran los valores más alejados dentro del rango normal y los puntos fuera de ellos representan posibles atípicos.
+
+:::
+
+
+::: {.tema}
+
+# 4. Reducción de dimensionalidad y análisis de clústeres
+
+**4.1 Métodos de reducción de la dimensión**
+
+Los métodos de reducción de dimensionalidad buscan representar un conjunto de datos utilizando menos variables que las originales, pero conservando la mayor cantidad posible de información. Para ello, buscan factores o dimensiones ocultas que expliquen gran parte de la variabilidad de los datos con una cantidad menor de variables. CUC_MineriaDatos_BD_Sem3
+
+**4.1.1 Análisis en Componentes Principales (ACP / PCA)**
+
+El Análisis en Componentes Principales es una técnica de reducción de dimensionalidad cuyo objetivo es crear nuevas variables llamadas componentes principales, en las cuales se concentre la mayor cantidad posible de información de las variables originales. CUC_MineriaDatos_BD_Sem3
+
+En una tabla de datos, las filas representan individuos y las columnas representan variables. PCA transforma esas variables originales en componentes principales, permitiendo trabajar con menos dimensiones. CUC_MineriaDatos_BD_Sem3
+
+**Plano principal:** forma parte del PCA y consiste en buscar el mejor plano o subespacio para representar la nube de puntos. Normalmente se utilizan los primeros componentes principales, ya que concentran la mayor cantidad de información. CUC_MineriaDatos_BD_Sem3
+
+La idea mostrada en las imágenes de la PPT es que un mismo conjunto de datos puede verse de distintas formas dependiendo del plano desde el que se observe, por lo que PCA intenta encontrar la representación que conserve mejor su estructura.
+
+**4.2 Clustering o clasificación no supervisada**
+
+El clustering es una técnica de aprendizaje no supervisado que busca dividir un conjunto de individuos en grupos según sus similitudes. Los grupos no están definidos previamente, sino que se forman a partir de las características de los propios datos. Después, un experto debe interpretar qué representa cada grupo. CUC_MineriaDatos_BD_Sem3
+
+**Clasificación automática**
+
+La clasificación automática busca reconocer grupos de individuos homogéneos, procurando que los individuos de un mismo grupo sean similares y que los diferentes grupos estén claramente separados. Los datos pueden estar formados por variables cuantitativas, cualitativas o medidas de proximidad. CUC_MineriaDatos_BD_Sem3
+
+**Objetivo del análisis de clúster**
+
+El objetivo es obtener grupos lo más homogéneos posible internamente y, al mismo tiempo, suficientemente diferentes entre sí. CUC_MineriaDatos_BD_Sem3
+
+**Criterio de la inercia**
+
+El criterio de la inercia expresa dos ideas fundamentales:
+
+**Intra-clúster:** minimizar la distancia entre los individuos pertenecientes al mismo grupo.
+
+**Inter-clúster:** maximizar la distancia entre grupos diferentes. CUC_MineriaDatos_BD_Sem3
+
+En otras palabras, los puntos del mismo clúster deben estar cerca entre sí, mientras que los diferentes clústeres deben estar lo más separados posible.
+
+**4.2.1 Clustering jerárquico**
+
+El clustering jerárquico ascendente comienza considerando los individuos de manera separada y posteriormente va agrupando los más similares. A medida que avanza el proceso, los grupos pequeños se unen hasta formar grupos mayores. CUC_MineriaDatos_BD_Sem3
+
+Este proceso puede representarse mediante un dendrograma, que muestra cómo se van formando y relacionando los distintos grupos.
+
+**4.2.2 Nubes dinámicas o k-means**
+
+K-means es uno de los métodos de clustering más utilizados. Trabaja con datos no etiquetados y pertenece al clustering exclusivo o “duro”, lo que significa que cada individuo puede pertenecer solamente a un clúster. CUC_MineriaDatos_BD_Sem3
+
+El algoritmo divide los datos en grupos utilizando centroides, que representan el centro de cada clúster. Cada punto se asigna al centroide más cercano, normalmente utilizando la distancia euclidiana. El objetivo es minimizar la distancia entre los individuos y el centro de su grupo. CUC_MineriaDatos_BD_Sem3
+
+El valor k representa la cantidad de clústeres:
+
+**Un k mayor produce más grupos y más pequeños.**
+
+**Un k menor produce menos grupos y más grandes.**
+
+K-means puede utilizarse para segmentación de mercados, agrupación de documentos, análisis de imágenes y compresión de imágenes. CUC_MineriaDatos_BD_Sem3
+
+**Método del codo Jambu**
+
+El método del codo Jambu ayuda a determinar un número adecuado de clústeres para k-means.
+
+Se calcula el WCSS, que representa la variación o distancia existente dentro de los clústeres, para distintos valores de k. Después se representa en una gráfica:
+
+**Eje X:** número de clústeres.
+
+**Eje Y:** WCSS.
+
+Se busca el punto donde la disminución del WCSS comienza a estabilizarse, formando visualmente un “codo”. Ese punto ayuda a seleccionar un número apropiado de clústeres. CUC_MineriaDatos_BD_Sem3
+
+**Ventajas de k-means**
+
+**Sencillo:** es fácil de comprender y aplicar.
+
+**Rápido:** utiliza un proceso iterativo computacionalmente simple y suele ser más rápido que el clustering jerárquico.
+
+**Escalable:** puede trabajar eficientemente con grandes conjuntos de datos. CUC_MineriaDatos_BD_Sem3
+
+**Desventajas de k-means**
+
+**Depende de los parámetros iniciales:** una mala selección de centroides o del número de clústeres puede producir resultados de baja calidad. CUC_MineriaDatos_BD_Sem3
+
+**Puede funcionar mal con ciertos datos:** presenta dificultades cuando los grupos tienen tamaños muy diferentes, existen grandes variaciones o los datos tienen muchas dimensiones. CUC_MineriaDatos_BD_Sem3
+
+**Es sensible a los valores atípicos:** los outliers pueden modificar los centroides y afectar la formación de los grupos. CUC_MineriaDatos_BD_Sem3
+
+**Idea clave para estudiar**
+
+**PCA:** reduce la cantidad de dimensiones intentando conservar la mayor información posible.
+
+**Clustering:** agrupa individuos similares sin conocer previamente las clases.
+
+**Dentro de clustering:**
+
+**Jerárquico:** va formando grupos progresivamente.
+
+**K-means:** forma grupos utilizando centroides y un número de clústeres definido por k.
+
+:::
+
+
+::: {.tema}
+
+# 5. Modelos predictivos y regresión
+
+**5.1 Modelos predictivos**
+
+Los modelos predictivos son sistemas matemáticos o computacionales que utilizan datos históricos para identificar patrones y estimar valores o eventos futuros. Pueden apoyarse en estadística, aprendizaje automático y modelos matemáticos, y se utilizan para mejorar la toma de decisiones en áreas como finanzas, marketing, salud y logística. CUC_MineriaDatos_BD_Sem4
+
+**Tipos de modelos predictivos**
+
+**Modelos de regresión:** estudian la relación entre variables para predecir valores numéricos.
+
+**Modelos de clasificación:** asignan los datos a grupos o clases según los patrones encontrados.
+
+**Series temporales:** analizan datos registrados a través del tiempo para encontrar tendencias y predecir valores futuros.
+
+**Árboles de decisión:** utilizan una estructura similar a un árbol para tomar decisiones según diferentes condiciones.
+
+**Redes neuronales:** son modelos capaces de identificar relaciones y patrones complejos en los datos. CUC_MineriaDatos_BD_Sem4
+
+**Aplicaciones de los modelos predictivos**
+
+**Análisis de riesgos:** estimar la probabilidad de eventos no deseados, como fraudes o impagos.
+
+**Marketing personalizado:** analizar o segmentar clientes para adaptar estrategias a sus características y preferencias.
+
+**Optimización de procesos:** anticipar situaciones para mejorar la eficiencia de los procesos.
+
+**Predicción de la demanda:** estimar cuánto se necesitará de un producto o servicio para mejorar inventarios y producción.
+
+**Mantenimiento predictivo:** anticipar posibles fallas en equipos para realizar mantenimiento antes de que ocurran.
+
+**Detección de fraudes:** identificar transacciones o comportamientos sospechosos.
+
+**Salud:** apoyar la predicción de enfermedades, diagnósticos y personalización de tratamientos. CUC_MineriaDatos_BD_Sem4
+
+En general, los modelos predictivos permiten anticipar posibles resultados utilizando información del pasado, ayudando a reducir riesgos y tomar decisiones mejor informadas.
+
+**5.2 Regresión lineal simple**
+
+La regresión lineal simple es un modelo estadístico que busca predecir una variable utilizando otra variable. Para hacerlo, encuentra una línea recta que represente lo mejor posible la relación observada entre ambas. CUC_MineriaDatos_BD_Sem4
+
+**Variables principales**
+
+**Variable independiente o predictora (X):** es la variable que se utiliza para intentar explicar o predecir otra variable.
+
+**Variable dependiente o respuesta (Y):** es la variable cuyo valor se desea explicar o predecir. CUC_MineriaDatos_BD_Sem4
+
+Por ejemplo, si queremos predecir las ventas según el dinero invertido en publicidad:
+
+**X = gasto en publicidad**
+
+**Y = ventas**
+
+**Fórmula**
+
+**Y = b0 + b1X**
+
+**b0:** intercepto. Es el valor estimado de Y cuando X vale 0.
+
+**b1:** pendiente. Indica cuánto cambia Y aproximadamente cuando X aumenta una unidad. CUC_MineriaDatos_BD_Sem4
+
+La línea de regresión es la recta que mejor se ajusta a los datos, mientras que los coeficientes b0 y b1 determinan su posición e inclinación. CUC_MineriaDatos_BD_Sem4
+
+**Pasos básicos de una regresión lineal simple**
+
+**1. Recopilar los datos:** obtener observaciones de la variable predictora X y de la variable que queremos predecir Y.
+
+**2. Crear un gráfico de dispersión:** representar los valores de X e Y para observar visualmente si parecen seguir una relación aproximadamente lineal.
+
+**3. Calcular b0 y b1:** obtener matemáticamente la recta que mejor se ajusta a los datos mediante el método de mínimos cuadrados.
+
+**4. Interpretar el modelo:** analizar b1 para conocer cómo cambia Y cuando cambia X y b0 para conocer el valor estimado de Y cuando X es cero.
+
+**5. Validar el modelo:** comprobar que la regresión cumple condiciones necesarias, como una relación lineal y un comportamiento adecuado de los residuos. CUC_MineriaDatos_BD_Sem4
+
+**Aplicaciones**
+
+Puede utilizarse para estudiar relaciones como edad y salario, temperatura y crecimiento de plantas, rendimiento de inversiones o ventas según publicidad. CUC_MineriaDatos_BD_Sem4
+
+**5.3 Regresión lineal múltiple**
+
+La regresión lineal múltiple funciona de forma similar a la regresión simple, pero utiliza dos o más variables independientes para explicar o predecir una variable dependiente. CUC_MineriaDatos_BD_Sem4
+
+Su fórmula general es:
+
+**Y = β₀ + β₁X₁ + β₂X₂ + … + βₚXₚ + ε**
+
+**Y:** variable que queremos predecir.
+
+**X₁, X₂...:** variables utilizadas para realizar la predicción.
+
+**β₀:** intercepto.
+
+**β₁, β₂...:** coeficientes que indican la relación de cada variable con Y.
+
+**ε:** término de error. CUC_MineriaDatos_BD_Sem4
+
+Por ejemplo, para predecir el precio de una casa, se pueden utilizar al mismo tiempo el tamaño, la ubicación, el número de habitaciones y la antigüedad. CUC_MineriaDatos_BD_Sem4
+
+Sus características principales son que permite realizar predicciones utilizando múltiples variables y analizar cuáles tienen mayor influencia sobre el resultado. Sin embargo, identificar una relación entre variables no significa necesariamente que exista causalidad. CUC_MineriaDatos_BD_Sem4
+
+Se utiliza en áreas como ciencias sociales, economía, salud e ingeniería. CUC_MineriaDatos_BD_Sem4
+
+**5.4 Regresión logística**
+
+La regresión logística es un método supervisado utilizado cuando se quiere predecir un resultado binario, es decir, dos posibles categorías, normalmente representadas como 0 y 1. CUC_MineriaDatos_BD_Sem4
+
+Por ejemplo:
+
+**0 = Reprobado / 1 = Aprobado**
+
+**0 = No fraude / 1 = Fraude**
+
+**0 = No elegible / 1 = Elegible**
+
+A diferencia de la regresión lineal, que predice un valor numérico continuo, la regresión logística permite estimar la probabilidad asociada a uno de esos resultados.
+
+Una aplicación presentada en la PPT es la calificación crediticia, donde puede utilizarse para evaluar si un cliente cumple los criterios necesarios para obtener un préstamo o una tarjeta de crédito. CUC_MineriaDatos_BD_Sem4
+
+**Diferencia clave**
+
+**Regresión lineal simple:** una X → predice una Y numérica.
+
+**Regresión lineal múltiple:** varias X → predicen una Y numérica.
+
+**Regresión logística:** una o varias variables predictoras → predicen un resultado binario 0/1.
+
+::: {.tema}
+
+# 6. Código explicado y conceptos prácticos
+
+Esta sección muestra el código utilizado en clase y explica de forma resumida qué hace cada parte. El objetivo no es memorizar todas las líneas, sino comprender qué realiza cada instrucción y qué concepto teórico representa.
+
+**1. Instalación e importación de librerías**
+
+```python
+%pip install prince
+```
+
+```python
+import  os 
+import  numpy  as  np 
+import  pandas  as  pd 
+import  seaborn  as  sns 
+import  matplotlib.pyplot  as  plt 
+from  prince  import  PCA  as  PCA_Prince 
+from  sklearn.decomposition  import  PCA 
+from  sklearn.datasets  import  load_digits 
+from  sklearn.preprocessing  import  StandardScaler 
+```
+
+**Explicación:**
+
+- `%pip install prince`: instala la librería `prince`.
+- `os`: permite trabajar con archivos y rutas.
+- `numpy`: trabaja con arreglos y operaciones numéricas.
+- `pandas`: permite manejar datos en tablas o DataFrames.
+- `seaborn`: crea gráficos estadísticos.
+- `matplotlib`: permite crear y mostrar gráficos.
+- `PCA_Prince` y `PCA`: herramientas relacionadas con Análisis de Componentes Principales.
+- `load_digits`: permite cargar un dataset de ejemplo.
+- `StandardScaler`: permite estandarizar variables.
+- Algunas herramientas se importan, pero no se utilizan posteriormente en este notebook.
+
+---
+
+**2. Carga del dataset y dimensiones**
+
+```python
+datos = pd.read_csv(
+    r'C:\Users\andre\Documents\CUC\Cuatrimeste_lll_2026\MineriaDatos\Data\SAheart.csv',
+    delimiter=';',
+    decimal='.'
+)
+
+datos.shape
+```
+
+**Explicación:**
+
+- `pd.read_csv()`: carga el archivo `SAheart.csv`.
+- `datos =`: guarda el archivo en un DataFrame llamado `datos`.
+- `r'...'`: representa la ruta donde está almacenado el archivo.
+- `delimiter=';'`: indica que las columnas están separadas por punto y coma.
+- `decimal='.'`: indica que el punto se utiliza como separador decimal.
+- `datos.shape`: devuelve la cantidad de filas y columnas.
+- El resultado es `(462, 10)`, es decir, **462 registros y 10 variables**.
+
+---
+
+**3. Visualización de las primeras filas**
+
+```python
+datos.head()
+```
+
+**Explicación:**
+
+- `head()` muestra las primeras filas del dataset.
+- Por defecto muestra cinco registros.
+- Sirve para revisar rápidamente las variables, los valores y la estructura general de los datos.
+
+---
+
+**4. Eliminación de valores faltantes y resumen estadístico**
+
+```python
+datos.dropna().describe() #Eliminar valores faltantes.
+```
+
+**Explicación:**
+
+- `dropna()`: elimina las filas que contienen valores faltantes.
+- `describe()`: calcula estadísticas descriptivas de las variables numéricas.
+- Incluye:
+  - cantidad
+  - media
+  - desviación estándar
+  - mínimo
+  - 25%
+  - 50%
+  - 75%
+  - máximo
+
+Primero se eliminan los valores faltantes y después se realiza el resumen estadístico.
+
+---
+
+**5. Media**
+
+```python
+datos.mean(numeric_only=True)
+```
+
+**Explicación:**
+
+- `mean()`: calcula la media o promedio.
+- `numeric_only=True`: utiliza solamente las variables numéricas.
+- Permite conocer el promedio de cada variable cuantitativa.
+
+---
+
+**6. Mediana**
+
+```python
+datos.median(numeric_only=True)
+```
+
+**Explicación:**
+
+- `median()`: calcula la mediana.
+- La mediana representa el valor central de los datos ordenados.
+- `numeric_only=True`: excluye las variables categóricas.
+
+---
+
+**7. Desviación estándar**
+
+```python
+#ddof = 0 -> sdt poblacional
+#ddpd = 1 -> sdt muestral
+datos.std(numeric_only=True, ddof =1)
+```
+
+**Explicación:**
+
+- `std()`: calcula la desviación estándar.
+- Mide cuánto se dispersan los valores respecto a la media.
+- `ddof=1`: calcula la desviación estándar muestral.
+- `ddof=0`: se utilizaría para la desviación estándar poblacional.
+- `numeric_only=True`: analiza únicamente variables numéricas.
+
+---
+
+**8. Valores máximos**
+
+```python
+datos.max(numeric_only=True)
+```
+
+**Explicación:**
+
+- `max()`: devuelve el valor más alto de cada variable numérica.
+- Sirve para conocer los extremos superiores del conjunto de datos.
+
+---
+
+**9. Valores mínimos**
+
+```python
+datos.min(numeric_only=True)
+```
+
+**Explicación:**
+
+- `min()`: devuelve el valor más bajo de cada variable numérica.
+- Permite conocer los extremos inferiores del conjunto de datos.
+
+---
+
+**10. Cuantiles**
+
+```python
+datos.quantile(np.array([0,.33,.50,.75,1]),numeric_only=True)
+```
+
+**Explicación:**
+
+- `np.array([0,.33,.50,.75,1])`: crea un arreglo con los porcentajes que se quieren calcular.
+- `quantile()`: obtiene los valores correspondientes a esos porcentajes.
+- `0`: mínimo.
+- `0.33`: aproximadamente el 33% de los datos.
+- `0.50`: mediana.
+- `0.75`: tercer cuartil.
+- `1`: máximo.
+- `numeric_only=True`: utiliza solamente las variables numéricas.
+
+---
+
+**11. Conteo de categorías de CHD**
+
+```python
+datos['chd'].value_counts()
+```
+
+**Explicación:**
+
+- `datos['chd']`: selecciona la variable `chd`.
+- `value_counts()`: cuenta cuántas veces aparece cada categoría.
+- El resultado muestra:
+  - `No`: 302
+  - `Si`: 160
+
+Sirve para conocer la frecuencia de una variable categórica.
+
+---
+
+**12. Conteo de antecedentes familiares**
+
+```python
+datos['famhist'].value_counts()
+```
+
+**Explicación:**
+
+- Selecciona la variable `famhist`.
+- `value_counts()` cuenta sus categorías.
+- El resultado muestra:
+  - `Absent`: 270
+  - `Present`: 192
+
+---
+
+**13. Creación de arreglos y DataFrame**
+
+```python
+genero = np.array(["M","F","F","M","F","M","M"])
+madurez = np.array(["Mayor","Menor","Mayor","Mayor","Menor","Menor","Mayor"])
+df = pd.DataFrame() 
+df['Genero'] = genero
+df['Madurez'] = madurez
+df
+```
+
+**Explicación:**
+
+- `np.array()`: crea arreglos de datos.
+- `genero`: almacena categorías `M` y `F`.
+- `madurez`: almacena categorías `Mayor` y `Menor`.
+- `pd.DataFrame()`: crea una tabla vacía.
+- `df['Genero'] = genero`: agrega la columna `Genero`.
+- `df['Madurez'] = madurez`: agrega la columna `Madurez`.
+- `df`: muestra la tabla creada.
+
+Este ejemplo sirve para trabajar con variables cualitativas o categóricas.
+
+---
+
+**14. Tabla de contingencia entre género y madurez**
+
+```python
+tab = pd.crosstab(index=genero, columns=madurez, rownames=["Genero"], colnames=[""],
+                  margins=True, margins_name="Total") 
+tab
+```
+
+**Explicación:**
+
+- `pd.crosstab()`: crea una tabla de contingencia.
+- `index=genero`: coloca el género en las filas.
+- `columns=madurez`: coloca la madurez en las columnas.
+- `rownames=["Genero"]`: asigna nombre al índice.
+- `colnames=[""]`: deja sin nombre el encabezado de las columnas.
+- `margins=True`: agrega totales de filas y columnas.
+- `margins_name="Total"`: llama `Total` a esos valores.
+- `tab`: muestra la tabla.
+
+Sirve para observar la relación entre dos variables categóricas mediante frecuencias.
+
+---
+
+**15. Tabla de frecuencia de CHD**
+
+```python
+pd.crosstab(index=datos["chd"],columns=["Conteo"],
+            rownames=["Valores chd"], colnames=[""])
+```
+
+**Explicación:**
+
+- `index=datos["chd"]`: utiliza las categorías de `chd` como filas.
+- `columns=["Conteo"]`: crea una columna llamada `Conteo`.
+- `rownames=["Valores chd"]`: coloca un nombre al índice.
+- El resultado muestra cuántos casos existen para cada categoría.
+
+---
+
+**16. Tabla de frecuencia de famhist**
+
+```python
+pd.crosstab(index=datos["famhist"],columns=["Conteo"],
+            rownames=["Valores de famhist"], colnames=[""])
+```
+
+**Explicación:**
+
+- Utiliza `famhist` como variable categórica.
+- Cuenta los casos `Absent` y `Present`.
+- Es una tabla de frecuencias.
+
+---
+
+**17. Tabla cruzada entre famhist y chd**
+
+```python
+famhist_chd = pd.crosstab(index=datos["famhist"], columns=datos["chd"],
+                         rownames=["Valores famhist"], colnames=["Valores chd"],
+                         margins=True, margins_name="Total")
+famhist_chd
+```
+
+**Explicación:**
+
+- `index=datos["famhist"]`: coloca los antecedentes familiares en las filas.
+- `columns=datos["chd"]`: coloca la enfermedad coronaria en las columnas.
+- `margins=True`: agrega totales.
+- `margins_name="Total"`: llama `Total` a los totales.
+- El resultado permite comparar conjuntamente ambas variables.
+
+Por ejemplo, permite observar cuántas personas con antecedentes familiares presentan o no enfermedad coronaria.
+
+---
+
+**18. Misma tabla cruzada sin nombres de encabezado**
+
+```python
+famhist_chd = pd.crosstab(index=datos["famhist"], columns=datos["chd"],
+                         rownames=[""], colnames=[""], margins=True, margins_name="Total")
+famhist_chd
+```
+
+**Explicación:**
+
+Realiza el mismo análisis anterior.
+
+La diferencia es que:
+
+- `rownames=[""]`: deja vacío el nombre de las filas.
+- `colnames=[""]`: deja vacío el nombre de las columnas.
+
+El cambio es principalmente visual; los datos analizados son los mismos.
+
+---
+
+**19. Guardar el conteo de CHD**
+
+```python
+dt_conteo = pd.crosstab(index=datos["chd"], columns="Conteo", colnames=[""])
+dt_conteo
+```
+
+**Explicación:**
+
+- Crea una tabla de frecuencia para `chd`.
+- Guarda el resultado en la variable `dt_conteo`.
+- Esa tabla se utilizará posteriormente para crear un gráfico.
+
+---
+
+**20. Gráfico de barras de CHD**
+
+```python
+#Valores en y(frecuencia)
+alto = [dt_conteo.iloc[0,0], dt_conteo.iloc[1,0]]
+
+#Valores en x(etiquetas)
+barras = ('No', 'Sí')
+
+#Configuración del gráfico
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize = (10,5), dpi = 100)
+ax.bar(barras, alto, color=['red','blue'])
+plt.show()
+```
+
+**Explicación:**
+
+- `dt_conteo.iloc[0,0]`: obtiene el valor ubicado en la primera fila y primera columna.
+- `dt_conteo.iloc[1,0]`: obtiene el valor ubicado en la segunda fila y primera columna.
+- `iloc`: permite acceder a datos utilizando su posición.
+- `alto`: guarda las frecuencias que aparecerán en el eje Y.
+- `barras=('No','Sí')`: define las etiquetas del eje X.
+- `plt.subplots()`: crea la figura y el espacio del gráfico.
+- `nrows=1, ncols=1`: crea un solo gráfico.
+- `figsize=(10,5)`: define su tamaño.
+- `dpi=100`: establece la resolución.
+- `ax.bar()`: crea el gráfico de barras.
+- `color=['red','blue']`: asigna colores a las barras.
+- `plt.show()`: muestra el gráfico.
+
+---
+
+**21. Segundo gráfico de barras**
+
+```python
+alto = [dt_conteo.iloc[0,0], dt_conteo.iloc[1,0]]
+barras = ('Absent ', 'Present')
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize = (10,5), dpi = 100) #Densidad de pixeles es dpi
+ax.bar(barras, alto, color=['red','blue'])
+plt.show()
+```
+
+**Explicación:**
+
+- `alto`: utiliza nuevamente los valores de `dt_conteo`.
+- `barras`: cambia las etiquetas del gráfico a `Absent` y `Present`.
+- `figsize`: define el tamaño.
+- `dpi`: define la densidad o resolución de píxeles.
+- `ax.bar()`: crea las barras.
+- `plt.show()`: muestra el gráfico.
+
+**Importante:** `dt_conteo` fue creado anteriormente utilizando `chd`, aunque en este gráfico aparecen las etiquetas `Absent` y `Present`.
+
+---
+
+**22. Diagrama de caja o Boxplot**
+
+```python
+# Variables cuantitativas
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize = (10,5), dpi = 100)
+boxplots = datos.boxplot(return_type='axes',ax=ax)
+plt.show()
+```
+
+**Explicación:**
+
+- `plt.subplots()`: crea el espacio del gráfico.
+- `datos.boxplot()`: genera diagramas de caja.
+- `return_type='axes'`: devuelve los ejes del gráfico.
+- `ax=ax`: dibuja el boxplot en los ejes creados.
+- `plt.show()`: muestra el gráfico.
+
+El boxplot permite observar:
+
+- mediana
+- cuartiles
+- dispersión
+- posibles valores atípicos
+
+---
+
+**23. Gráfico de densidad de sbp**
+
+```python
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize = (10,5), dpi = 50)
+
+col = "sbp"
+ax.set_xlabel(col)
+
+densidad = datos[col].plot(kind='density',ax = ax)
+plt.show()
+```
+
+**Explicación:**
+
+- `col="sbp"`: selecciona la variable `sbp`.
+- `ax.set_xlabel(col)`: coloca el nombre de la variable en el eje X.
+- `datos[col]`: selecciona esa columna.
+- `plot(kind='density')`: crea un gráfico de densidad.
+- `ax=ax`: utiliza los ejes previamente creados.
+- `plt.show()`: muestra el gráfico.
+
+La densidad permite observar de forma suavizada cómo se distribuyen los datos.
+
+---
+
+**24. Gráfico de densidad de age**
+
+```python
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize = (10,5), dpi = 50)
+
+col = "age"
+ax.set_xlabel(col)
+
+densidad = datos[col].plot(kind='density',ax = ax)
+plt.show()
+```
+
+**Explicación:**
+
+- `col="age"`: selecciona la variable edad.
+- `set_xlabel()`: coloca el nombre de la variable en el eje X.
+- `kind='density'`: crea la curva de densidad.
+- Permite observar la distribución de las edades.
+
+---
+
+**25. Gráfico de densidad de todas las columnas**
+
+```python
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize = (10,5), dpi = 100)
+densidad = datos[datos.columns].plot(kind='density',ax = ax)
+plt.show()
+```
+
+**Explicación:**
+
+- `datos.columns`: obtiene los nombres de todas las columnas.
+- `datos[datos.columns]`: selecciona todas las columnas.
+- `plot(kind='density')`: crea gráficos de densidad.
+- Permite comparar visualmente las distribuciones de las variables.
+
+---
+
+**26. Histograma de sbp**
+
+```python
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize = (10,6), dpi = 50)
+densidad = datos['sbp'].plot(kind='hist',ax = ax)
+plt.show()
+```
+
+**Explicación:**
+
+- `datos['sbp']`: selecciona la variable `sbp`.
+- `kind='hist'`: crea un histograma.
+- El histograma divide los valores en intervalos y muestra cuántas observaciones aparecen en cada uno.
+- Permite estudiar la distribución de la presión arterial.
+
+---
+
+**27. Histograma de age**
+
+```python
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize = (10,6), dpi = 50)
+densidad = datos['age'].plot(kind='hist',ax = ax)
+plt.show()
+```
+
+**Explicación:**
+
+- Selecciona la variable `age`.
+- `kind='hist'`: crea el histograma.
+- Permite observar en qué intervalos de edad se concentran los datos.
+
+---
+
+**28. Histogramas de todas las columnas**
+
+```python
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize = (10,6), dpi = 50)
+densidad = datos[datos.columns].plot(kind='hist', ax = ax)
+plt.show()
+```
+
+**Explicación:**
+
+- `datos[datos.columns]`: selecciona todas las columnas.
+- `kind='hist'`: genera histogramas.
+- Permite comparar la distribución de distintas variables.
+
+---
+
+**29. Pairplot según CHD**
+
+```python
+sns.pairplot(datos, hue='chd', height=1.5)
+plt.show()
+```
+
+**Explicación:**
+
+- `sns.pairplot(datos)`: crea múltiples gráficos para comparar pares de variables.
+- `hue='chd'`: separa visualmente las observaciones según la categoría de `chd`.
+- `height=1.5`: define el tamaño de cada gráfico.
+- `plt.show()`: muestra el resultado.
+
+Sirve para observar:
+
+- relaciones entre variables
+- distribuciones
+- patrones
+- diferencias entre pacientes con y sin enfermedad coronaria
+
+---
+
+**30. Pairplot según antecedentes familiares**
+
+```python
+sns.pairplot(datos, hue='famhist', height=1)
+plt.show()
+```
+
+**Explicación:**
+
+- `pairplot()`: compara gráficamente las variables entre sí.
+- `hue='famhist'`: diferencia las observaciones según los antecedentes familiares.
+- `height=1`: controla el tamaño de cada gráfico.
+- Permite analizar si existen patrones diferentes entre `Present` y `Absent`.
+
+---
+
+**31. Diferencia entre histograma y densidad**
+
+**Histograma:** agrupa los valores en intervalos y muestra sus frecuencias mediante barras.
+
+**Densidad:** muestra mediante una curva suavizada la forma general de la distribución.
+
+Ambos permiten analizar cómo se distribuye una variable numérica.
+
+---
+
+**32. Relación del código con CRISP-DM**
+
+La mayor parte del código corresponde a la fase de **Comprensión de los datos** de CRISP-DM.
+
+En esta fase el código permite:
+
+- cargar el conjunto de datos
+- conocer sus dimensiones
+- visualizar las primeras observaciones
+- tratar valores faltantes
+- calcular estadísticas descriptivas
+- estudiar variables cuantitativas
+- contar categorías
+- crear tablas de frecuencia
+- crear tablas de contingencia
+- analizar distribuciones
+- detectar posibles valores atípicos
+- estudiar relaciones entre variables
+
+---
+
+**33. PCA y estandarización**
+
+En las importaciones aparecen:
+
+```python
+from  prince  import  PCA  as  PCA_Prince 
+from  sklearn.decomposition  import  PCA 
+from  sklearn.preprocessing  import  StandardScaler 
+```
+
+**Explicación:**
+
+- `PCA_Prince` y `PCA` permiten aplicar Análisis de Componentes Principales.
+- `StandardScaler` permite estandarizar variables antes de ciertos análisis.
+- En este notebook estas herramientas se **importan, pero no llegan a ejecutarse**.
+
+---
+
+**Idea clave para estudiar**
+
+No es necesario memorizar todo el código línea por línea. Lo importante es comprender:
+
+- qué función se utiliza
+- qué información recibe
+- qué hace
+- qué resultado produce
+- qué concepto teórico representa
+
+Funciones principales:
+
+- `read_csv()`: carga datos.
+- `shape`: muestra filas y columnas.
+- `head()`: muestra las primeras observaciones.
+- `dropna()`: elimina valores faltantes.
+- `describe()`: genera estadísticas descriptivas.
+- `mean()`: calcula la media.
+- `median()`: calcula la mediana.
+- `std()`: calcula la desviación estándar.
+- `max()`: obtiene máximos.
+- `min()`: obtiene mínimos.
+- `quantile()`: calcula cuantiles.
+- `value_counts()`: cuenta categorías.
+- `DataFrame()`: crea una tabla de datos.
+- `crosstab()`: crea tablas de frecuencia o contingencia.
+- `iloc`: accede a valores según su posición.
+- `subplots()`: crea el espacio para un gráfico.
+- `bar()`: crea gráficos de barras.
+- `boxplot()`: muestra distribución y posibles valores atípicos.
+- `density`: muestra una distribución suavizada.
+- `hist`: crea histogramas.
+- `pairplot()`: compara varias variables entre sí.
+- `hue`: diferencia grupos mediante una variable categórica.
+- `show()`: muestra el gráfico.
+
+**Flujo general del código:**
+
+**Cargar datos → explorar estructura → describir estadísticamente → analizar categorías → crear tablas → visualizar distribuciones → identificar posibles atípicos → estudiar relaciones → interpretar.**
+
+:::
+:::
